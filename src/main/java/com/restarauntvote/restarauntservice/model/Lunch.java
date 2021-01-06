@@ -44,7 +44,7 @@ public class Lunch extends AbstractNamedEntity {
         this(lunch.getId(), lunch.getName(), lunch.getDate(), lunch.getPrice(), lunch.getRestaurant());
     }
 
-    private String getName() {
+    public String getName() {
         return name;
     }
 

@@ -36,4 +36,8 @@ public class Choice extends AbstractBaseEntity {
     @Column(name = "choice_date", nullable = false)
     @NotNull
     private LocalDate date;
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
 }

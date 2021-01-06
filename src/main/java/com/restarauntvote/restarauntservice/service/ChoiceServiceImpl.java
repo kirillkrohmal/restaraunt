@@ -22,11 +22,8 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @Service
 public class ChoiceServiceImpl implements ChoiceService {
-
     private static final LocalDate TODAY = LocalDate.now();
     private static final LocalTime TIME_LIMIT = LocalTime.parse("11:00");
     private final Logger log = LoggerFactory.getLogger(ChoiceService.class);

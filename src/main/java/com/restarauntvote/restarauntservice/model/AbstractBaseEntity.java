@@ -22,5 +22,4 @@ public abstract class AbstractBaseEntity extends AbstractPersistable<Long> {
     public boolean isNew() {
         return super.isNew();
     }
-
 }

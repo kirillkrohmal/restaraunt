@@ -6,13 +6,13 @@ import com.restarauntvote.restarauntservice.model.Lunch;
 import com.restarauntvote.restarauntservice.model.Restaurant;
 import com.restarauntvote.restarauntservice.model.User;
 import com.restarauntvote.restarauntservice.util.ChoiceStatus;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-
-
+@Service
 public interface ChoiceService {
     Optional<Choice> getForUserAndDate(Long userId, LocalDate date);
 

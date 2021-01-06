@@ -1,4 +1,4 @@
-package com.restarauntvote.restarauntservice.controller;
+package com.restarauntvote.restarauntservice.web;
 
 import com.restarauntvote.restarauntservice.exceptions.RestaurantNotFoundException;
 import com.restarauntvote.restarauntservice.model.Restaurant;
@@ -10,28 +10,27 @@ import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping(value = "/api/choice", produces = MediaTypes.UBER_JSON_VALUE)
-class UserRestController {
+public class ChoiceController {
+    @Autowired
     public ChoiceService choiceService;
 
-    @Autowired
-    public UserRestController(ChoiceService choiceService) {
+    public ChoiceController(ChoiceService choiceService) {
         this.choiceService = choiceService;
     }
 
     @GetMapping
-    public String current() throws RestaurantNotFoundException {
-        return "index.jsp";
+    public ResponseEntity<Restaurant> current(@AuthenticationPrincipal UserPrincipal userPrincipal) throws RestaurantNotFoundException {
+        return new ResponseEntity<> (choiceService.getCurrent(userPrincipal.getUser()), HttpStatus.OK);
     }
 
     @PostMapping("/{id}")
     public ResponseEntity<Restaurant> choice(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Restaurant restaurant) {
         ChoiceStatus choiceStatus = choiceService.choiceStatus(userPrincipal.getUser(), restaurant);
-        return new ResponseEntity<Restaurant> (choiceStatus.getChoice().getRestaurant(), choiceStatus.isCreated() ? HttpStatus.CREATED : HttpStatus.OK);
+        return new ResponseEntity<> (choiceStatus.getChoice().getRestaurant(), choiceStatus.isCreated() ? HttpStatus.CREATED : HttpStatus.OK);
     }
 }
