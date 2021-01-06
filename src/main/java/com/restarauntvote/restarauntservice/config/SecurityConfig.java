@@ -16,9 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.
-                inMemoryAuthentication()
+        auth
+                .inMemoryAuthentication()
                 .withUser("login").password(passwordEncoder().encode("password")).roles("USER");
     }
 
@@ -53,5 +52,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder ();
     }
-
 }
