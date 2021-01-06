@@ -116,6 +116,12 @@
 			<version>1.18.16</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.cwkr.validation/validation-util -->
+		<dependency>
+			<groupId>de.cwkr.validation</groupId>
+			<artifactId>validation-util</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 
 
 		<dependency>

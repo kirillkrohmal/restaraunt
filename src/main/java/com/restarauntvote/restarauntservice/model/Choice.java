@@ -11,10 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-/**
- * @author Vladimir Mikhaylov <vladmeh@gmail.com> on 27.05.2018.
- * @link https://github.com/vladmeh/choosing-topjava
- */
+
 
 @EqualsAndHashCode(callSuper = true)
 @Data
