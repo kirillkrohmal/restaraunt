@@ -17,21 +17,5 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/choice", produces = MediaTypes.UBER_JSON_VALUE)
 class UserRestController {
-    public ChoiceService choiceService;
 
-    @Autowired
-    public UserRestController(ChoiceService choiceService) {
-        this.choiceService = choiceService;
-    }
-
-    @GetMapping
-    public String current() throws RestaurantNotFoundException {
-        return "index.jsp";
-    }
-
-    @PostMapping("/{id}")
-    public ResponseEntity<Restaurant> choice(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Restaurant restaurant) {
-        ChoiceStatus choiceStatus = choiceService.choiceStatus(userPrincipal.getUser(), restaurant);
-        return new ResponseEntity<Restaurant> (choiceStatus.getChoice().getRestaurant(), choiceStatus.isCreated() ? HttpStatus.CREATED : HttpStatus.OK);
-    }
 }

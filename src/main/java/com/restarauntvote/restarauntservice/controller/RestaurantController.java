@@ -1,4 +1,4 @@
-package com.restarauntvote.restarauntservice.web;
+package com.restarauntvote.restarauntservice.controller;
 
 import com.restarauntvote.restarauntservice.model.Restaurant;
 import com.restarauntvote.restarauntservice.service.RestaurantService;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/restaurants", produces = MediaTypes.UBER_JSON_VALUE)
 public class RestaurantController {
+    @Autowired
     private final RestaurantService restaurantService;
 
-    @Autowired
     public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
     }

@@ -1,4 +1,4 @@
-package com.restarauntvote.restarauntservice.web;
+package com.restarauntvote.restarauntservice.controller;
 
 import com.restarauntvote.restarauntservice.exceptions.RestaurantNotFoundException;
 import com.restarauntvote.restarauntservice.model.Restaurant;
@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/choice", produces = MediaTypes.UBER_JSON_VALUE)
 public class ChoiceController {
-    @Autowired
-    public ChoiceService choiceService;
+    private ChoiceService choiceService;
 
+    @Autowired
     public ChoiceController(ChoiceService choiceService) {
         this.choiceService = choiceService;
     }
 
     @GetMapping
-    public ResponseEntity<Restaurant> current(@AuthenticationPrincipal UserPrincipal userPrincipal) throws RestaurantNotFoundException {
-        return new ResponseEntity<> (choiceService.getCurrent(userPrincipal.getUser()), HttpStatus.OK);
+    public String current() throws RestaurantNotFoundException {
+        return "index.html";
     }
 
     @PostMapping("/{id}")

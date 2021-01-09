@@ -78,7 +78,6 @@ public class ChoiceServiceImpl implements ChoiceService {
 
     @Override
     public ChoiceStatus choiceStatus(User user, Restaurant restaurant) {
-
         if (restaurant == null) {
             log.info("Restaurant not fount");
             throw new ResourceNotFoundException("Restaurant not found");
